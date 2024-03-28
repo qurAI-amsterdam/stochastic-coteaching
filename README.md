@@ -6,7 +6,7 @@ Code for StoCoT: [Stochastic co-teaching for training neural networks with unkno
 Stochastic co-teaching (StoCoT) is a method for training supervised classification and segmentation models on image data with high rates of labeling errors (label noise).
 This method builds on the co-teaching training paradigm, where two networks select training samples for each other, 
 by rejecting a fixed number of samples with the highest loss from a training batch. 
-Conversely, in StoCoT, to reject training samples the networks employ a rejection threshold on the estimated posterior probability of the (correct or noisy) 'ground-truth' class.
+Conversely, in StoCoT, to reject training samples the networks employ a rejection threshold on the estimated posterior probability of the 'ground-truth' class (which is potentially erroneous).
 This rejection threshold is randomly sampled from a Beta distribution. 
 The added stochasticity of StoCoT results in more robust optimization with respect to varying noise rates, compared to regular co-teaching.
 This better enables neural networks to be trained in cases where the rate of labeling inaccuracies is unknown.
@@ -43,3 +43,9 @@ python train.py  --output_directory <output_path> --alpha 32 --beta 2
 ```
 Replace <output_path> with desired output folder (new folder will be created). 
 To view options, run ```python ./code_segmentation_cmr/train.py --help``` or open train.py in your IDE/text editor.
+
+To replicate the experiments from the paper, ```cd``` to the code folder of the desired dataset/experiment and run:
+
+```
+bash run_experiments.sh
+```

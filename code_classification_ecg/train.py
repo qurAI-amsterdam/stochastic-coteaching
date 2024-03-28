@@ -127,10 +127,6 @@ def load_data(args, balance=False):
                                     data.ToTensor()])
 
 
-
-    val_transform = transforms.Compose([data.Sample(sample_size, rs=np.random.RandomState(8080)),
-                                        data.ToTensor()])
-
     num_channels = 12
     num_classes = 5
 
@@ -189,7 +185,6 @@ def main():
 
     data_loader_training, validation_set, num_channels, num_classes = load_data(args, args.balance)
 
-    validation_transform = None
     mode = 'batch_train'
 
     if args.network == 'wangresnet':
